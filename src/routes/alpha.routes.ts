@@ -20,12 +20,12 @@ const router = Router();
  *             properties:
  *               fruit:
  *                 type: string
+ *                 example: 'banana'
  *               animal:
  *                 type: string
+ *                 example: 'zebra'
  *               city-list:
- *                 type: array
- *                 items:
- *                   type: string
+ *                   example: ["sunnyvale","san jose"]
  *     responses:
  *       200:
  *         description: Successful response

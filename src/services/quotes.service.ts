@@ -1,5 +1,7 @@
 import { Quote } from "../entities/quote.entity";
 import { fetch } from "undici";
+import { format } from "date-fns";
+
 import "dotenv/config";
 
 const apiKey = process.env.API_KEY || "";
@@ -23,14 +25,24 @@ export const saveQuote = async () => {
       }
       await quote.save();
 
-      return quote; // Retornamos la cita.
+      const quoteFormated = {
+        author: quote.author,
+        id: quote.id,
+        quote: quote.quote,
+        consultation_date: format(
+          new Date(quote.consultation_date),
+          "dd-MM-yyyy"
+        ),
+      };
+
+      return quoteFormated; // Retornamos la cita con fecha formateada.
     } else {
-      throw new Error('La respuesta de la API no tiene una cita válida');
+      throw new Error("La respuesta de la API no tiene una cita válida");
     }
   } catch (error) {
     // Manejo de errores
     console.error(error);
-    throw new Error('Error al guardar la cita');
+    throw new Error("Error al guardar la cita");
   }
 };
 
@@ -42,7 +54,11 @@ export const getAllQuotes = async () => {
       if (!(author in result)) {
         result[author] = [];
       }
-      result[author].push({ id, quote, consultation_date });
+      result[author].push({
+        id,
+        quote,
+        consultation_date: format(new Date(consultation_date), "dd-MM-yyyy"),
+      });
       return result;
     }, {});
 

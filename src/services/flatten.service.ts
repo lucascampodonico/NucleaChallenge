@@ -18,6 +18,6 @@ export const saveUnflattendJson = async (item: any) => {
   } catch (error) {
     // Manejo de errores
     console.error(error);
-    throw new Error('Error al guardar el JSON aplanado');
+    throw new Error("Error al guardar el JSON aplanado");
   }
 };

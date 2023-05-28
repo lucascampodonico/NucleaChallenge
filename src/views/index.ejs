@@ -1,12 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+  <meta charset="utf-8">
+  <title>Nuclea Challenge</title>
+  <style>
+    /* Estilos CSS para mejorar la apariencia de la documentación */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    
+    p {
+      margin-bottom: 10px;
+    }
+    
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      overflow-x: auto;
+    }
+  </style>
 </head>
 <body>
+  <h1>Documentación del Proyecto</h1>
+  
+  <h2>Descripción del Proyecto</h2>
+  <p>
+    El Proyecto es una aplicación web desarrollada con Express.js que contiene las siguientes caracteristicas:
+  </p>
+  
+  <h2>API Endpoints</h2>
+  <p>
+    A continuación se enumeran los diferentes endpoints de tu API y una breve descripción de cada uno.
+  </p>
+  
+  <h3>PUT /alpha</h3>
+  <p>
+    Endpoint para ordenar alfabéticamente las claves de un JSON, cargarlo en la base de datos y devolver el JSON resultante en la respuesta HTTP.
+  </p>
+  <pre>
+    // Ejemplo de solicitud
+    PUT /alpha
+    Content-Type: application/json
     
+    {
+      "fruit": "apple",
+      "animal": "zebra",
+      "city-list": [
+        "sunnyvale",
+        "sanjose"
+      ]
+    }
+    
+    // Ejemplo de respuesta
+    Status: 200 OK
+    Content-Type: application/json
+    
+    {
+      "animal": "zebra",
+      "city-list": [
+        "sunnyvale",
+        "sanjose"
+      ],
+      "fruit": "apple"
+    }
+  </pre>
+  
+  <h3>POST /flatten</h3>
+  <p>
+    Endpoint para aplanar cualquier arreglo JSON en el payload de la solicitud, de modo que el JSON resultante no contenga arreglos JSON.
+  </p>
+  <pre>
+    // Ejemplo de solicitud
+    POST /flatten
+    Content-Type: application/json
+    
+    {
+      "fruit": "apple",
+      "animal": "zebra",
+      "city-list": [
+        "sunnyvale",
+        "sanjose"
+      ]
+    }
+    
+    // Ejemplo de respuesta
+    Status: 200 OK
+    Content-Type: application/json
+    
+    {
+      "fruit": "apple",
+      "animal": "zebra",
+      "city-list": "sunnyvale,sanjose"
+    }
+  </pre>
+  
+  <h3>POST /quote</h3>
+  <p>
+    Endpoint para consultar una API externa y obtener una cita, luego guardarla en la base de datos y devolver el resultado.
+  </p>
+  <pre>
+    // Ejemplo de solicitud
+    POST /quote
+    
+    // Ejemplo de respuesta
+    Status: 200 OK
+    Content-Type: application/json
+    
+    {
+      "author": "name",
+      "id": "someid",
+      "quote": "some awesome quote",
+      "consultation_date": "12-03-2022"
+    }
+  </pre>
+  
+  <h3>GET /quotes</h3>
+  <p>
+    Endpoint para obtener todas las citas almacenadas en la base de datos. Las citas están agrupadas por autor y ordenadas alfabéticamente. No se muestra el autor en cada cita, y dentro de cada autor, las citas se muestran en orden descendente según la fecha de consulta.
+  </p>
+  <pre>
+    // Ejemplo de solicitud
+    GET /quotes
+    
+    // Ejemplo de respuesta
+    Status: 200 OK
+    Content-Type: application/json
+    
+    {
+      "Author A": [
+        {
+          "id": "someid",
+          "quote": "some awesome quote",
+          "consultation_date": "12-03-2022"
+        },
+        {
+          "id": "someotherid",
+          "quote": "some awesome quote",
+          "consultation_date": "10-03-2022"
+        }
+      ],
+      "Author B": [
+        {
+          "id": "someextraid",
+          "quote": "some awesome quote",
+          "consultation_date": "04-1-2021"
+        }
+      ]
+    }
+  </pre>
+
+  
+  <h2>Requerimientos Técnicos</h2>
+  <p>
+    Debe estar programado en Node ya sea js o ts. Debe contar las siguientes características:<br><br>
+    ● Debe estar desarrollado en Express (https://expressjs.com/)<br>
+    ● Se conecte con una base de datos (puede ser un servicio de terceros)<br>
+    ● Debe implemente un logger<br>
+    ● Debe implemente al menos un middleware<br>
+    ● Debe manejar variables de entorno<br>
+    ● Debe implementar al menos dos test unitarios por endpoint<br>
+    ● Debe implementar manejo de errores<br>
+        ○ Rutas que no existan (404)<br>
+        ○ Si falla el api externa (500)<br>
+        ○ Validar inputs (400)<br>
+</p>
+  
+  
 </body>
 </html>

@@ -4,9 +4,13 @@ import cors from "cors";
 
 const app = express();
 
+// Middleware para registrar solicitudes en la consola durante el desarrollo.
 app.use(morgan("dev"));
-app.use(cors());
-app.use(express.json());
 
+// Middleware para permitir solicitudes de diferentes dominios.
+app.use(cors());
+
+// Middleware para analizar solicitudes con formato JSON.
+app.use(express.json());
 
 export default app;
