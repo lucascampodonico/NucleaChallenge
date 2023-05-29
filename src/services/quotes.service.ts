@@ -78,19 +78,8 @@ export const getAllQuotes = async () => {
       .forEach((author) => {
         const sortedQuotes = quotesByAuthor[author].sort(
           (a: { consultation_date: string }, b: { consultation_date: string }) => {
-            const datePartsA = a.consultation_date.split('-');
-            const dateA = new Date(
-              parseInt(datePartsA[2]), // año
-              parseInt(datePartsA[1]) - 1, // mes (los meses en JavaScript son base 0)
-              parseInt(datePartsA[0]) // día
-            );
-        
-            const datePartsB = b.consultation_date.split('-');
-            const dateB = new Date(
-              parseInt(datePartsB[2]), // año
-              parseInt(datePartsB[1]) - 1, // mes
-              parseInt(datePartsB[0]) // día
-            );
+            const dateA = parse(a.consultation_date, 'dd-MM-yyyy', new Date());
+            const dateB = parse(b.consultation_date, 'dd-MM-yyyy', new Date());
             return dateB.getTime() - dateA.getTime();
           }
         );
