@@ -4,7 +4,9 @@ import { alphabetize } from "../controllers/alpha.controller";
 const router = Router();
 
 /**
- * Put track
+ * Ruta: /alpha
+ * Método: PUT
+ * Descripción: Ordena alfabéticamente las claves de un objeto JSON.
  * @openapi
  * /alpha:
  *   put:

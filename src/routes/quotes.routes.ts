@@ -4,6 +4,9 @@ import { generateQuote, getQuotes } from "../controllers/quotes.controller";
 const router = Router();
 
 /**
+ * Ruta: /quote
+ * Método: POST
+ * Descripción: Genera una cita aleatoria.
  * @swagger
  * /quote:
  *   post:
@@ -20,6 +23,9 @@ const router = Router();
 router.post("/quote", generateQuote);
 
 /**
+ * Ruta: /quotes
+ * Método: GET
+ * Descripción: Obtiene todas las citas disponibles.
  * @swagger
  * /quotes:
  *   get:

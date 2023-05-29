@@ -4,21 +4,25 @@ import quotesRoutes from "../routes/quotes.routes";
 import { AppDataSource } from "../db";
 import { Quote } from "../entities/quote.entity";
 
+// Configuración inicial antes de todas las pruebas
 beforeAll(async () => {
   await AppDataSource.initialize();
   app.use(quotesRoutes);
 });
 
+// Limpieza después de todas las pruebas
 afterAll(async () => {
   await AppDataSource.destroy();
 });
 
+// Limpieza después de cada prueba
 afterEach(async () => {
   await new Promise((resolve) => setImmediate(resolve));
 });
 
 describe("POST /quote", () => {
   it("should return a quote object", async () => {
+    // Realizar la solicitud y realizar la comprobación
     const response = await supertest(app).post("/quote").expect(200);
 
     expect(response.body).toEqual(
@@ -51,6 +55,7 @@ describe("POST /quote", () => {
 
 describe("GET /quotes", () => {
   it("should return all quotes in the database", async () => {
+    // Realizar solicitud GET a /quotes
     const response = await supertest(app).get("/quotes").expect(200);
 
     expect(response.body).toEqual(
@@ -77,6 +82,7 @@ describe("GET /quotes", () => {
       .spyOn(Quote, "find")
       .mockRejectedValueOnce(new Error("Database error"));
 
+    // Realizar solicitud GET a /quotes y verificar el manejo de errores
     const response = await supertest(app).get("/quotes").expect(500);
 
     expect(response.body).toEqual({

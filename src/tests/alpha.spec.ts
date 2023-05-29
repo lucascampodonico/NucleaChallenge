@@ -3,31 +3,34 @@ import app from "../app";
 import alphaRoutes from "../routes/alpha.routes";
 import { AppDataSource } from "../db";
 import { saveDisorderedJson } from "../services/alpha.service";
-import { alphabetize } from "../controllers/alpha.controller";
-import { Request, Response } from "express";
 import { Alpha } from "../entities/alpha.entity";
 
+// Configuración inicial antes de todas las pruebas
 beforeAll(async () => {
   await AppDataSource.initialize();
   app.use(alphaRoutes);
 });
 
+// Limpieza después de todas las pruebas
 afterAll(async () => {
   await AppDataSource.destroy();
 });
 
+// Limpieza después de cada prueba
 afterEach(async () => {
   await new Promise((resolve) => setImmediate(resolve));
 });
 
 describe("PUT /alpha", () => {
   it("should return the sorted JSON object", async () => {
+    // Preparación de datos de prueba
     const requestBody = {
       fruit: "apple",
       animal: "zebra",
       "city-list": ["sunnyvale", "sanjose"],
     };
 
+    // Realizar la solicitud y realizar la comprobación
     const response = await supertest(app)
       .put("/alpha")
       .send(requestBody)
@@ -43,8 +46,10 @@ describe("PUT /alpha", () => {
   });
 
   it("should return 400 if the input is invalid", async () => {
+    // Preparación de datos de prueba inválidos
     const requestBody = "invalid input";
 
+    // Realizar la solicitud y realizar la comprobación
     const response = await supertest(app)
       .put("/alpha")
       .send(requestBody)

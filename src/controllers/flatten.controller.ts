@@ -1,6 +1,11 @@
 import { Request, Response } from "express";
 import { saveUnflattendJson } from "../services/flatten.service";
 
+/**
+ * Aplana un JSON enviado en la solicitud y lo guarda en la base de datos.
+ * @returns El JSON aplanado en la respuesta HTTP o un mensaje de error.
+ */
+
 export const flatten = async (req: Request, res: Response) => {
   try {
     // Verificamos que se envie solo JSON.

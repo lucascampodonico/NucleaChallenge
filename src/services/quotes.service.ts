@@ -6,6 +6,11 @@ import "dotenv/config";
 
 const apiKey = process.env.API_KEY || "";
 
+/**
+ * Guarda una cita obtenida de una API externa y devuelve la cita guardada.
+ * @returns La cita guardada con fecha formateada.
+ * @throws {Error} - Si ocurre un error al guardar la cita.
+ */
 export const saveQuote = async () => {
   try {
     const response = await fetch(`https://api.api-ninjas.com/v1/quotes`, {
@@ -46,6 +51,11 @@ export const saveQuote = async () => {
   }
 };
 
+/**
+ * Obtiene todas las citas guardadas y las organiza por autor y fecha de consulta.
+ * @returns Las citas organizadas por autor y fecha.
+ * @throws {Error} - Si ocurre un error al obtener las citas.
+ */
 export const getAllQuotes = async () => {
   try {
     const quotes = await Quote.find();

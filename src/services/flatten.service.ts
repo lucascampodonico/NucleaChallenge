@@ -1,5 +1,11 @@
 import { Flatten } from "../entities/flatten.entity";
 
+/**
+ * Guarda el JSON sin aplanar en la base de datos y devuelve el JSON aplanado.
+ * @param {any} item - El JSON sin aplanar a guardar.
+ * @returns El JSON aplanado.
+ * @throws {Error} - Si ocurre un error al guardar el JSON aplanado.
+ */
 export const saveUnflattendJson = async (item: any) => {
   try {
     const flatten = item;

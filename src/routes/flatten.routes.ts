@@ -4,6 +4,9 @@ import { flatten } from "../controllers/flatten.controller";
 const router = Router();
 
 /**
+ * Ruta: /flatten
+ * Método: POST
+ * Descripción: Aplana cualquier arreglo JSON en el cuerpo de la solicitud.
  * @openapi
  * /flatten:
  *   post:
