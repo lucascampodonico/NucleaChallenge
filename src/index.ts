@@ -21,10 +21,6 @@ export async function main() {
   try {
     await AppDataSource.initialize();
 
-    // Configuración de vistas y motor de plantillas
-    app.set("views", join(__dirname, "views"));
-    app.set("view engine", "ejs");
-
     setupSwagger(app);
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
     
