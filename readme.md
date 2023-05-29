@@ -36,12 +36,10 @@ Instala las dependencias del proyecto utilizando npm:
 npm install
 ```
 
-Configura las variables de entorno:
-
-Modifica el archivo .env en la raíz del proyecto y define las siguientes variables:
+Compila el proyecto:
 
 ```bash
-PORT=3000
+npm run build
 ```
 
 Inicia la aplicación:
