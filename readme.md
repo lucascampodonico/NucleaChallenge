@@ -12,8 +12,8 @@ El Proyecto es una aplicación web desarrollada con Express.js que contiene esta
 💻 Requisitos previos
 Antes de poder desplegar y ejecutar el proyecto, asegúrate de tener los siguientes requisitos previos instalados en tu sistema:
 
- * Node.js (versión X.X.X)
- * npm (versión X.X.X)
+ * Node.js (16 o superior)
+ * npm
 
 💻 Instalación
 Sigue los siguientes pasos para instalar y desplegar el Proyecto XYZ:
@@ -27,7 +27,7 @@ git clone https://github.com/lucascampodonico/NucleaChallenge.git
 Accede al directorio del proyecto:
 
 ```bash
-cd proyecto-xyz
+cd NucleaChallenge
 ```
 
 Instala las dependencias del proyecto utilizando npm:
