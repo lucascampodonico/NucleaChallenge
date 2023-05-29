@@ -20,59 +20,91 @@ Sigue los siguientes pasos para instalar y desplegar el Proyecto XYZ:
 
 Clona este repositorio en tu máquina local:
 
-shell
-Copy code
-git clone <URL_DEL_REPOSITORIO>
+```bash
+git clone https://github.com/lucascampodonico/NucleaChallenge.git
+```
+
 Accede al directorio del proyecto:
 
-shell
-Copy code
+```bash
 cd proyecto-xyz
+```
+
 Instala las dependencias del proyecto utilizando npm:
 
-shell
-Copy code
+```bash
 npm install
+```
+
 Configura las variables de entorno:
 
-Crea un archivo .env en la raíz del proyecto y define las siguientes variables:
+Modifica el archivo .env en la raíz del proyecto y define las siguientes variables:
 
-makefile
-Copy code
+```bash
 PORT=3000
-MONGODB_URI=<URL_DE_LA_BASE_DE_DATOS_MONGODB>
-Asegúrate de reemplazar <URL_DE_LA_BASE_DE_DATOS_MONGODB> con la URL de tu base de datos MongoDB (si deseas utilizar MongoDB para almacenar los datos ordenados). Si no deseas utilizar MongoDB, puedes omitir la variable MONGODB_URI y se utilizará una base de datos en memoria.
+```
 
 Inicia la aplicación:
 
-shell
-Copy code
+```bash
 npm start
+```
+
 La aplicación se ejecutará en http://localhost:3000 o en el puerto que hayas especificado en la variable de entorno PORT.
 
-Uso
-Una vez que la aplicación esté en ejecución, puedes enviar solicitudes HTTP para ordenar tus datos JSON. Asegúrate de enviar una solicitud POST a la ruta /alphabetize con un cuerpo JSON válido. La aplicación verificará que la solicitud contenga JSON y responderá con el JSON ordenado alfabéticamente.
+------
 
-Ejemplo de solicitud utilizando cURL:
+💻Uso
 
-shell
-Copy code
-curl -X POST -H "Content-Type: application/json" -d '{"b": 2, "a": 1}' http://localhost:3000/alphabetize
-Respuesta esperada:
+- Alfabetización:
 
-json
-Copy code
+   Una vez que la aplicación esté en ejecución, puedes enviar solicitudes HTTP para ordenar tus datos JSON. Asegúrate de enviar una solicitud POST a la ruta /alpha con un cuerpo JSON válido. La aplicación verificará que la solicitud contenga JSON y responderá con el JSON ordenado alfabéticamente.
+
+```bash
 {
-  "a": 1,
-  "b": 2
+  "fruit": "banana",
+  "animal": "zebra",
+  "city-list": [
+    "sunnyvale",
+    "san jose"
+  ]
 }
-Contribución
-Si deseas contribuir al Proyecto XYZ, ¡eres bienvenido! Puedes hacer lo siguiente:
+```
 
-Realizar pull requests para sugerir mejoras o correcciones.
-Reportar problemas o errores en el repositorio de problemas.
-Proporcionar comentarios y sugerencias en el repositorio de problemas.
-Licencia
-El Proyecto XYZ se distribuye bajo la Licencia MIT. Puedes consultar el archivo LICENSE para obtener más información sobre los términos de la licencia.
+- Aplanamiento:
 
-Contacto
+   Asegúrate de enviar una solicitud POST a la ruta /flatten con un cuerpo JSON válido. La aplicación verificará que la solicitud contenga JSON y responderá con el JSON aplanado.
+
+```bash
+{
+  "fruit": "banana",
+  "animal": "zebra",
+  "city-list": [
+    "sunnyvale",
+    "san jose"
+  ]
+}
+```
+
+- Quote:
+
+   Envia una solicitud POST a la ruta /quote para obtener una cita random.
+
+- Quotes:
+
+   Envia una solicitud GET a la ruta /quotes para obtener el listado de citas consultadas.
+
+
+💻 API
+
+- Actualmente se esta corriendo la aplicacion en Google App Engine.
+
+| DESCRIPCION  | URL | PETICION  | HEADER  | RESPUESTA
+| ------ | ------ | ------ | ------ | ------ |
+| Service Alphabetize | https://lucas-campodonico.uc.r.appspot.com/alpha | PUT | Content-Type: application/json | JSON sorted.
+| Service Flatten | https://lucas-campodonico.uc.r.appspot.com/flatten | POST |  Content-Type: application/json | JSON flattened.
+| Service Quote | https://lucas-campodonico.uc.r.appspot.com/quote | POST | Content-Type: application/json | Quote.
+| Service Quotes | https://lucas-campodonico.uc.r.appspot.com/quotes | GET |  Content-Type: application/json | All Quotes.
+| Documentation Swagger | https://lucas-campodonico.uc.r.appspot.com/app-docs |  |   | 
+
+------
