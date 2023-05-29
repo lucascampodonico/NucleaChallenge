@@ -13,4 +13,7 @@ app.use(cors());
 // Middleware para analizar solicitudes con formato JSON.
 app.use(express.json());
 
+// Configurar middleware para servir archivos estáticos
+app.use(express.static('public'));
+
 export default app;

@@ -6,12 +6,5 @@ env_variables:
   DB_PASSWORD: Nuclea2023
   DB_PORT: 5432
   API_KEY: "OhWZwy+E7rqmKRx4REUcJw==Hh5WL7BxiKwNKai4"
-
-handlers:
-
-  - url: /
-    static_dir: views
-
-  - url: /.*
-    script: auto
+  
 default_expiration: "4d 5h"
