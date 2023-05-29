@@ -72,10 +72,12 @@ export const getAllQuotes = async () => {
       return result;
     }, {});
 
+    //Ordenamos por Autor
     const sortedAuthors: any = {};
     Object.keys(quotesByAuthor)
       .sort()
       .forEach((author) => {
+        //Ordenamos las citas del autor por fecha.
         const sortedQuotes = quotesByAuthor[author].sort(
           (a: { consultation_date: string }, b: { consultation_date: string }) => {
             const dateA = parse(a.consultation_date, 'dd-MM-yyyy', new Date());
