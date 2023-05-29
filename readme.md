@@ -103,6 +103,6 @@ La aplicación se ejecutará en http://localhost:3000 o en el puerto que hayas e
 | Service Flatten | https://lucas-campodonico.uc.r.appspot.com/flatten | POST |  Content-Type: application/json | JSON flattened.
 | Service Quote | https://lucas-campodonico.uc.r.appspot.com/quote | POST | Content-Type: application/json | Quote.
 | Service Quotes | https://lucas-campodonico.uc.r.appspot.com/quotes | GET |  Content-Type: application/json | All Quotes.
-| Documentation Swagger | https://lucas-campodonico.uc.r.appspot.com/app-docs |  |   | 
+| Documentation Swagger | https://lucas-campodonico.uc.r.appspot.com/api-docs |  |   | 
 
 ------
