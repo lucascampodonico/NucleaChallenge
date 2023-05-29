@@ -1,6 +1,6 @@
 import { Quote } from "../entities/quote.entity";
 import { fetch } from "undici";
-import { format } from "date-fns";
+import { format, parse } from "date-fns";
 
 import "dotenv/config";
 
@@ -78,8 +78,8 @@ export const getAllQuotes = async () => {
       .forEach((author) => {
         const sortedQuotes = quotesByAuthor[author].sort(
           (a: { consultation_date: Date }, b: { consultation_date: Date }) => {
-            const dateA = new Date(a.consultation_date);
-            const dateB = new Date(b.consultation_date);
+            const dateA = parse(a.consultation_date, 'dd-MM-yyyy', new Date());
+            const dateB = parse(b.consultation_date, 'dd-MM-yyyy', new Date());
             return dateB.getTime() - dateA.getTime();
           }
         );
